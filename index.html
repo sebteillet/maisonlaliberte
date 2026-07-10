@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maison La Liberté — maison partagée pour seniors à Nercillac</title>
+<meta name="description" content="Maison partagée pour seniors autonomes à Nercillac, près de Cognac. 10 chambres individuelles, parc de 5 300 m², présence chaque jour. Dès 2 800 € tout compris.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0}
+  body{background:#e7e2d8;font-family:'Mulish',sans-serif}
+  .site{background:#f6f1e7;color:#122031;line-height:1.6}
+  a{color:inherit}
+  .site input::placeholder,.site textarea::placeholder{color:rgba(246,241,231,.5)}
+  html{scroll-behavior:smooth}
+  .site section[id]{scroll-margin-top:100px}
+  details{border-bottom:1px solid rgba(18,32,49,.14)}
+  summary{list-style:none;cursor:pointer;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';position:absolute;right:2px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:30px;color:#b08d57;line-height:1}
+  details[open] summary::after{content:'\2013'}
+
+  /* ---------- RESPONSIVE (overrides desktop inline styles only on small screens) ---------- */
+  @media (max-width: 900px){
+    .site{box-shadow:none}
+    /* horizontal breathing room on sections + big inner blocks */
+    .site > section, .site > header, .site > footer,
+    .site [style*="px 84px"],
+    .site [style*="px 72px"],
+    .site [style*="px 96px"],
+    .site [style*="px 90px"],
+    .site [style*="px 46px"],
+    .site [style*="padding:0 120px"],
+    .site [style*="padding:44px"]{padding-left:28px !important;padding-right:28px !important}
+    /* tame oversized vertical section padding */
+    .site [style*="92px 120px"], .site [style*="96px 120px"], .site [style*="90px 120px"],
+    .site [style*="88px 120px"], .site [style*="94px 120px"], .site [style*="92px 90px"],
+    .site [style*="82px 90px"], .site [style*="74px 120px"], .site [style*="96px 120px"]{
+      padding-top:64px !important;padding-bottom:64px !important}
+    /* collapse every multi-column grid to one column... */
+    .site [style*="grid-template-columns"]{grid-template-columns:1fr !important}
+    /* ...then bring the icon/stat grids back to two-up */
+    .site [style*="repeat(4,1fr)"],
+    .site [style*="repeat(5,1fr)"]{grid-template-columns:1fr 1fr !important}
+    /* close the big column gaps once stacked */
+    .site [style*="gap:80px"], .site [style*="gap:70px"], .site [style*="gap:64px"],
+    .site [style*="gap:62px"], .site [style*="gap:56px"], .site [style*="gap:48px"]{gap:34px !important}
+    /* scale display headings down */
+    .site h1{font-size:44px !important;line-height:1.08 !important}
+    .site h2{font-size:32px !important;line-height:1.14 !important}
+    /* header: hide center nav, let actions wrap */
+    .site header{flex-wrap:wrap !important;gap:16px !important;padding:16px 24px !important}
+    .site header nav{display:none !important}
+    /* hero: grow to fit content instead of clipping */
+    .site > section:first-of-type{height:auto !important;min-height:560px}
+    /* trim tall side images once stacked */
+    .site [style*="height:560px"],
+    .site [style*="height:600px"],
+    .site [style*="height:500px"],
+    .site [style*="height:480px"]{height:320px !important}
+    .site iframe[title*="Carte"]{height:300px !important}
+    /* CTA band: stack text above buttons */
+    .site [style*="justify-content:space-between"][style*="flex-wrap:wrap"]{gap:22px !important}
+  }
+  @media (max-width: 560px){
+    .site > section, .site > footer{padding-top:52px !important;padding-bottom:52px !important}
+    .site header{padding:12px 16px !important;gap:10px !important}
+    .site header a[href="tel:+33788291723"]{font-size:12px !important}
+    .site header a[href="#contact"]{padding:9px 14px !important;font-size:11px !important}
+    .site > section, .site > header, .site > footer,
+    .site [style*="px 84px"], .site [style*="px 72px"], .site [style*="px 96px"],
+    .site [style*="px 90px"], .site [style*="px 46px"],
+    .site [style*="padding:0 120px"], .site [style*="padding:44px"]{padding-left:20px !important;padding-right:20px !important}
+    /* stat + icon grids drop to a single column on phones */
+    .site [style*="repeat(4,1fr)"],
+    .site [style*="repeat(5,1fr)"]{grid-template-columns:1fr 1fr !important}
+    .site h1{font-size:34px !important}
+    .site h2{font-size:26px !important}
+    /* footer: stack logo + details, left align */
+    .site footer{flex-direction:column !important;align-items:flex-start !important;text-align:left !important}
+    .site footer div[style*="text-align:right"]{text-align:left !important}
+    /* stat strip a touch smaller */
+    .site [style*="font-size:38px"]{font-size:30px !important}
+    /* huge price number */
+    .site [style*="font-size:76px"]{font-size:56px !important}
+    /* tighten stacked images a bit more */
+    .site [style*="height:560px"], .site [style*="height:600px"],
+    .site [style*="height:500px"], .site [style*="height:480px"]{height:260px !important}
+  }
+  @media (max-width: 420px){
+    /* pricing detail cards: two-up is too cramped with their padding/border once the
+       viewport gets this narrow (title+price row wraps mid-word) — drop to one column */
+    .site [style*="repeat(4,1fr)"][style*="gap:14px"]{grid-template-columns:1fr !important}
+  }
+  @media (max-width: 900px){
+    /* le concept / la vie ici / en toute confiance / comment ça se passe : un item par ligne sur mobile */
+    .site .responsive-1col{grid-template-columns:1fr !important}
+    /* tableau comparatif : bascule en cartes empilées sur mobile */
+    .site .compare-desktop{display:none !important}
+    .site .compare-mobile{display:block !important}
+    /* galerie "le lieu" : retire le padding interne en trop (déjà géré par la section) pour que les photos prennent toute la largeur */
+    .site .lieu-gallery{padding-left:0 !important;padding-right:0 !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="site">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:18px 56px;background:#122031;color:#f6f1e7">
+    <a href="#" style="text-decoration:none;color:#f6f1e7;display:flex;flex-direction:column;line-height:1;gap:5px">
+      <span style="font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-weight:600;color:#e9d9be;padding-left:3px">Maison</span>
+      <span style="font-family:'Playfair Display',serif;font-size:26px;letter-spacing:.05em;font-weight:600">LA LIBERTÉ</span>
+    </a>
+    <nav style="display:flex;gap:34px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">
+      <a href="#lieu" style="text-decoration:none;color:#f6f1e7;opacity:.85">Le lieu</a>
+      <a href="#vie" style="text-decoration:none;color:#f6f1e7;opacity:.85">La vie ici</a>
+      <a href="#tarif" style="text-decoration:none;color:#f6f1e7;opacity:.85">Tarif</a>
+      <a href="#histoire" style="text-decoration:none;color:#f6f1e7;opacity:.85">Vos hôtes</a>
+      <a href="#contact" style="text-decoration:none;color:#f6f1e7;opacity:.85">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:22px">
+      <a href="tel:+33788291723" style="text-decoration:none;color:#f6f1e7;font-size:14px;font-weight:600;letter-spacing:.02em;white-space:nowrap">07 88 29 17 23</a>
+      <a href="#contact" style="text-decoration:none;background:#b08d57;color:#122031;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:12px 22px;border-radius:2px;white-space:nowrap">Réserver une visite</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;height:720px;overflow:hidden">
+    <img id="1a-hero" src="assets/photo-hero-web.jpg" alt="Photo de la maison / du parc" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#dcd5c5">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 50% 40%,rgba(18,32,49,.16) 0%,rgba(18,32,49,.44) 100%),linear-gradient(180deg,rgba(18,32,49,.6) 0%,rgba(18,32,49,.3) 42%,rgba(18,32,49,.74) 100%);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 120px;color:#f6f1e7;pointer-events:none">
+      <img src="assets/logo-batiment-flip.png" alt="Maison La Liberté" style="height:82px;width:auto;filter:drop-shadow(0 6px 26px rgba(13,24,38,.7))">
+      <div style="width:58px;height:1px;background:rgba(233,217,190,.55);margin:18px 0 13px"></div>
+      <div style="font-size:11px;letter-spacing:.42em;text-transform:uppercase;font-weight:500;color:#e9d9be;margin-bottom:9px;padding-left:.42em">Maison</div>
+      <div style="font-family:'Playfair Display',serif;font-size:40px;letter-spacing:.05em;font-weight:500;line-height:1;margin-bottom:30px;text-shadow:0 2px 24px rgba(18,32,49,.5)">LA LIBERTÉ</div>
+      <div style="font-size:12.5px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;margin-bottom:18px;color:#e9d9be">Maison partagée pour seniors</div>
+      <div style="display:inline-flex;align-items:center;gap:10px;background:#b08d57;color:#122031;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:11px 24px;border-radius:40px;margin-bottom:26px;box-shadow:0 6px 22px rgba(13,24,38,.35)"><span style="width:6px;height:6px;border-radius:50%;background:#122031"></span>Ouverture · Octobre 2026</div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:60px;line-height:1.06;margin:0;letter-spacing:.005em;text-wrap:balance;text-shadow:0 2px 30px rgba(18,32,49,.4)">La liberté de vieillir<br>chez soi, entourés.</h1>
+      <p style="max-width:650px;margin:28px 0 0;font-size:18.5px;line-height:1.6;font-weight:400;color:#f4eee4">Une maison de caractère à taille humaine à Nercillac, près de Cognac. Dix résidents, un cadre d'exception, une présence attentive chaque jour.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin-top:38px;pointer-events:auto">
+        <a href="#contact" style="text-decoration:none;background:#b08d57;color:#122031;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:16px 30px;border-radius:2px;white-space:nowrap;box-sizing:border-box">Rejoindre la liste d'attente</a>
+        <a href="#lieu" style="text-decoration:none;border:1px solid rgba(246,241,231,.6);color:#f6f1e7;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:16px 30px;border-radius:2px;white-space:nowrap;box-sizing:border-box">Découvrir le lieu</a>
+      </div>
+      <div style="margin-top:22px;font-size:13px;letter-spacing:.08em;color:#e9d9be;font-weight:500">10 places seulement · Réponse sous 24h · Visite sans engagement</div>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <section style="display:grid;grid-template-columns:repeat(4,1fr);background:#122031;color:#f6f1e7">
+    <div style="padding:30px 20px;text-align:center;border-right:1px solid rgba(246,241,231,.14)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1;color:#e9d9be">10</div>
+      <div style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:8px;opacity:.8">chambres individuelles</div>
+    </div>
+    <div style="padding:30px 20px;text-align:center;border-right:1px solid rgba(246,241,231,.14)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1;color:#e9d9be">5 300 m²</div>
+      <div style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:8px;opacity:.8">de parc arboré</div>
+    </div>
+    <div style="padding:30px 20px;text-align:center;border-right:1px solid rgba(246,241,231,.14)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1;color:#e9d9be">10 min</div>
+      <div style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:8px;opacity:.8">de Cognac</div>
+    </div>
+    <div style="padding:30px 20px;text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1;color:#e9d9be">2 800 €</div>
+      <div style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:8px;opacity:.8">par mois, tout compris</div>
+      <div style="font-size:10.5px;margin-top:4px;opacity:.6">dès ~2 000 € aides déduites*</div>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section style="padding:96px 120px 84px;text-align:center">
+    <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:22px">Le concept</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.12;margin:0 auto;max-width:820px;text-wrap:balance">Ni tout à fait chez soi,<br>ni une institution.</h2>
+    <p style="max-width:720px;margin:26px auto 0;font-size:17px;color:#47525e;font-weight:400;line-height:1.7">Entre le maintien à domicile — qui peut devenir difficile avec la solitude — et l'EHPAD qui ne convient pas aux personnes encore autonomes, La Liberté propose une alternative : une vraie maison, partagée et chaleureuse, pour se sentir comme à la maison.</p>
+    <div class="responsive-1col" style="display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:64px;text-align:left">
+      <div style="border-top:2px solid #b08d57;padding-top:24px">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;margin:0 0 10px">Liberté préservée</h3>
+        <p style="margin:0;font-size:15px;color:#47525e;line-height:1.7;font-weight:400">Vous gardez votre rythme, vos habitudes et votre indépendance.</p>
+      </div>
+      <div style="border-top:2px solid #b08d57;padding-top:24px">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;margin:0 0 10px">Présence chaque jour</h3>
+        <p style="margin:0;font-size:15px;color:#47525e;line-height:1.7;font-weight:400">Une équipe présente de 8h à 20h30 et une télésurveillance 24h/24, pour la tranquillité d'esprit des familles.</p>
+      </div>
+      <div style="border-top:2px solid #b08d57;padding-top:24px">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;margin:0 0 10px">Esprit familial</h3>
+        <p style="margin:0;font-size:15px;color:#47525e;line-height:1.7;font-weight:400">Dix résidents. Des repas partagés, des visages connus, une véritable maison de famille.</p>
+      </div>
+      <div style="border-top:2px solid #b08d57;padding-top:24px">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;margin:0 0 10px">Une maison, pas une chaîne</h3>
+        <p style="margin:0;font-size:15px;color:#47525e;line-height:1.7;font-weight:400">Régis &amp; Roselyne vivent sur place. Pas de personnel tournant, pas de logique de groupe — une seule maison, tenue par un seul couple.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR UN PROCHE (anti-culpabilité, cible aidant) -->
+  <section style="padding:0 56px 96px">
+    <div style="background:#122031;color:#f6f1e7;border-radius:4px;padding:76px 84px;display:grid;grid-template-columns:1fr 1fr;gap:62px;align-items:center">
+      <div>
+        <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:20px">Vous cherchez pour un proche ?</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.12;margin:0">Ne le « placez » pas.<br>Offrez-lui une maison.</h2>
+      </div>
+      <div>
+        <p style="margin:0 0 26px;font-size:16.5px;color:#dfe4ea;font-weight:400;line-height:1.8">Accompagner un parent qui vieillit, c'est parfois s'épuiser — et douter. Ici, il ne s'agit pas d'un placement : c'est une vraie maison, une présence chaque jour, et la liberté de rester pleinement lui-même. Et vous, vous redevenez simplement son fils, sa fille.</p>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:14px;align-items:baseline;font-size:15.5px;color:#f6f1e7"><span style="color:#b08d57;font-size:18px">✦</span>Vous savez votre parent en sécurité, entouré et jamais seul.</div>
+          <div style="display:flex;gap:14px;align-items:baseline;font-size:15.5px;color:#f6f1e7"><span style="color:#b08d57;font-size:18px">✦</span>Il garde son autonomie, son rythme et sa dignité.</div>
+          <div style="display:flex;gap:14px;align-items:baseline;font-size:15.5px;color:#f6f1e7"><span style="color:#b08d57;font-size:18px">✦</span>Vous venez le voir et séjournez auprès de lui quand vous le souhaitez, dans la chambre réservée aux familles.</div>
+        </div>
+        <a href="#contact" style="display:inline-block;margin-top:30px;text-decoration:none;background:#b08d57;color:#122031;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:15px 28px;border-radius:2px">En parler avec nous</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LE LIEU -->
+  <section id="lieu" style="padding:0 0 96px">
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;align-items:stretch">
+      <img id="1a-lieu1" src="assets/photo-lieu-facade-web.jpg" alt="Façade de la maison de caractère" style="width:100%;height:560px;object-fit:cover;display:block;background:#dcd5c5">
+      <div style="background:#122031;color:#f6f1e7;padding:76px 84px;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:20px">Le lieu</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.12;margin:0 0 22px">Une demeure<br>de caractère de 1800.</h2>
+        <p style="margin:0 0 28px;font-size:16px;color:#cfd6de;font-weight:400;line-height:1.75">Entièrement rénovée, plus de 420 m² de dépendances aménagées sur deux niveaux, nichée dans un parc arboré avec piscine chauffée. Un cadre pensé pour se sentir chez soi.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 30px;font-size:14.5px">
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="color:#b08d57">—</span><span>Parc arboré de 5 300 m²</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="color:#b08d57">—</span><span>Piscine chauffée 12 × 6 m</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="color:#b08d57">—</span><span>Deux grands salons de vie</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="color:#b08d57">—</span><span>Chambre pour recevoir vos proches</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="lieu-gallery" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:14px 56px 0">
+      <img id="1a-lieu2" src="assets/lieu-image00017-web.jpg" alt="Façade et tourelle" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#dcd5c5;border-radius:4px">
+      <img id="1a-lieu3" src="assets/lieu-imagefi-web.jpg" alt="Le parc arboré" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#dcd5c5;border-radius:4px">
+      <img id="1a-lieu4" src="assets/lieu-image00107-web.jpg" alt="Les dépendances en pierre" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#dcd5c5;border-radius:4px">
+    </div>
+  </section>
+
+  <!-- LES CHAMBRES -->
+  <section style="padding:0 56px 96px">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center">
+      <div>
+        <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Les chambres</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.12;margin:0 0 22px">Une chambre<br>bien à soi.</h2>
+        <p style="margin:0 0 26px;font-size:16px;color:#47525e;font-weight:400;line-height:1.75">Chacune des dix chambres est individuelle, avec sa salle d'eau et ses toilettes privatives. On y apporte ses meubles, ses cadres, ses souvenirs — pour se sentir vraiment chez soi.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;color:#122031">
+          <div style="display:flex;gap:12px;align-items:baseline;border-bottom:1px solid rgba(18,32,49,.12);padding-bottom:14px"><span style="color:#b08d57;font-weight:700">01</span>Chambre individuelle d'environ 20 m², salle d'eau &amp; WC privatifs compris</div>
+          <div style="display:flex;gap:12px;align-items:baseline;border-bottom:1px solid rgba(18,32,49,.12);padding-bottom:14px"><span style="color:#b08d57;font-weight:700">02</span>Deux chambres adaptées aux personnes à mobilité réduite</div>
+          <div style="display:flex;gap:12px;align-items:baseline"><span style="color:#b08d57;font-weight:700">03</span>À meubler et personnaliser selon vos envies</div>
+        </div>
+      </div>
+      <img id="1a-chambre" src="assets/photo-chambre-web.jpg" alt="Une chambre individuelle" style="width:100%;height:480px;object-fit:cover;display:block;background:#dcd5c5;border-radius:4px">
+
+    </div>
+  </section>
+
+  <!-- CTA BAND 1 -->
+  <section style="padding:74px 120px;background:#efe8da;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap">
+    <div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;line-height:1.12;margin:0 0 8px;color:#122031">Le mieux, c'est de venir la découvrir.</h2>
+      <p style="margin:0;font-size:16px;color:#47525e;font-weight:400;line-height:1.6">Poussez la porte, prenez le temps — nous vous recevrons avec plaisir, sans engagement.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="#contact" style="text-decoration:none;background:#b08d57;color:#122031;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:16px 30px;border-radius:2px">Réserver une visite</a>
+      <a href="tel:+33788291723" style="text-decoration:none;border:1px solid rgba(18,32,49,.35);color:#122031;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:16px 30px;border-radius:2px">07 88 29 17 23</a>
+    </div>
+  </section>
+
+  <!-- LA VIE ICI / PRESTATIONS -->
+  <section id="vie" style="padding:92px 120px;background:#122031;color:#f6f1e7">
+    <div style="text-align:center;margin-bottom:56px">
+      <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:20px">La vie ici</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:48px;line-height:1.1;margin:0">Tout est prévu, tout est inclus.</h2>
+    </div>
+    <div class="responsive-1col" style="display:grid;grid-template-columns:repeat(4,1fr);gap:36px 30px">
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">La table</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Repas maison préparés avec des produits locaux (ferme de Tambourinour) et partagés tous ensemble.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Présence 8h–20h30</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Une présence humaine attentive tout au long de la journée.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Télésurveillance 24h/24</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Sécurité assurée jour et nuit, sans caractère médicalisé.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Aide au quotidien</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Un coup de main ponctuel dans les gestes de tous les jours.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Entretien &amp; linge</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Chambres, linge personnel et de maison, entretien des extérieurs et équipements.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Démarches &amp; rendez-vous</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Aide administrative et accompagnement aux rendez-vous.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Ateliers &amp; animations</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Mémoire, cuisine, jardinage, jeux, sorties et moments festifs.</p></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e9d9be;margin-bottom:8px">Vos proches accueillis</div><p style="margin:0;font-size:14px;color:#cfd6de;font-weight:400;line-height:1.65">Une chambre invités pour que la famille reste quelques jours.</p></div>
+    </div>
+  </section>
+
+  <!-- CONFIANCE -->
+  <section style="padding:82px 90px;background:#efe8da">
+    <div style="text-align:center;margin-bottom:50px">
+      <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">En toute confiance</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.1;margin:0">Un projet sérieux, encadré et rassurant.</h2>
+    </div>
+    <div class="responsive-1col" style="display:grid;grid-template-columns:repeat(5,1fr);gap:26px">
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="color:#b08d57;font-size:22px;line-height:1">✦</span><div style="font-size:15px;font-weight:600;color:#122031;line-height:1.4">Référencée par le Département de la Charente</div><p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Un projet reconnu et orienté par les acteurs publics du territoire.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="color:#b08d57;font-size:22px;line-height:1">✦</span><div style="font-size:15px;font-weight:600;color:#122031;line-height:1.4">Assistante de Vie aux Familles diplômée</div><p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Un titre reconnu pour accompagner chacun avec justesse au quotidien.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="color:#b08d57;font-size:22px;line-height:1">✦</span><div style="font-size:15px;font-weight:600;color:#122031;line-height:1.4">Télésurveillance 24h/24 &amp; sécurité incendie</div><p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Une maison aux normes, veillée jour et nuit.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="color:#b08d57;font-size:22px;line-height:1">✦</span><div style="font-size:15px;font-weight:600;color:#122031;line-height:1.4">Contrat avec période d'essai</div><p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">On s'assure ensemble que ce mode de vie convient, sans engagement.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="color:#b08d57;font-size:22px;line-height:1">✦</span><div style="font-size:15px;font-weight:600;color:#122031;line-height:1.4">Aide à vos dossiers d'aides</div><p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Nous vous accompagnons dans vos démarches (APA, aides sociales).</p></div>
+    </div>
+  </section>
+
+  <!-- ECO -->
+  <section style="padding:88px 120px;text-align:center">
+    <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Démarche responsable</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;line-height:1.12;margin:0 auto 44px;max-width:720px">Une maison qui prend soin de demain.</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div style="border:1px solid rgba(18,32,49,.14);padding:30px 22px;border-radius:3px"><div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px">Photovoltaïque</div><p style="margin:0;font-size:14.5px;color:#47525e;font-weight:400;line-height:1.6">Production électrique en autoconsommation.</p></div>
+      <div style="border:1px solid rgba(18,32,49,.14);padding:30px 22px;border-radius:3px"><div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px">Potager suspendu</div><p style="margin:0;font-size:14.5px;color:#47525e;font-weight:400;line-height:1.6">Un potager suspendu, accessible à tous, pour cultiver, partager et profiter des récoltes de saison.</p></div>
+      <div style="border:1px solid rgba(18,32,49,.14);padding:30px 22px;border-radius:3px"><div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px">Poulailler &amp; composteur</div><p style="margin:0;font-size:14.5px;color:#47525e;font-weight:400;line-height:1.6">Des œufs frais à portée de main et une réduction des déchets organiques.</p></div>
+    </div>
+  </section>
+
+  <!-- TARIF -->
+  <section id="tarif" style="padding:0 56px 96px">
+    <div style="background:#122031;color:#f6f1e7;border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr">
+      <div style="padding:70px 72px">
+        <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:20px">Le tarif</div>
+        <div style="display:flex;align-items:baseline;gap:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:76px;line-height:.9">2 800 €</span><span style="font-size:16px;color:#cfd6de">/ mois</span></div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#e9d9be;margin-top:6px">tout compris</div>
+        <div style="font-size:14px;color:#e9d9be;margin-top:14px;font-weight:600">Soit dès ~2 000 €/mois, aides et réduction d'impôt déduites*</div>
+        <p style="margin:26px 0 0;font-size:15px;color:#cfd6de;font-weight:400;line-height:1.75">Une alternative qualitative entre la résidence services et l'EHPAD — sans le caractère médicalisé, avec bien plus d'attention. Contrat avec période d'essai.</p>
+        <a href="#contact" style="display:inline-block;margin-top:32px;text-decoration:none;background:#b08d57;color:#122031;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:16px 30px;border-radius:2px">Demander la brochure</a>
+        <div style="font-size:11.5px;color:#cfd6de;opacity:.55;margin-top:18px;line-height:1.5">*Estimation selon votre situation : crédit d'impôt de 50 % sur les services à la personne, et APA selon le niveau d'autonomie (GIR). Nous vous accompagnons pour évaluer votre reste à charge réel.</div>
+      </div>
+      <div style="background:rgba(246,241,231,.05);padding:60px 72px;display:flex;flex-direction:column;justify-content:center;gap:16px;border-left:1px solid rgba(246,241,231,.12)">
+        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#e9d9be;margin-bottom:6px">Le forfait comprend</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;border-bottom:1px solid rgba(246,241,231,.12);padding-bottom:14px"><span style="color:#b08d57">✦</span>Chambre individuelle &amp; salle d'eau privative</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;border-bottom:1px solid rgba(246,241,231,.12);padding-bottom:14px"><span style="color:#b08d57">✦</span>Pension complète, repas maison</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;border-bottom:1px solid rgba(246,241,231,.12);padding-bottom:14px"><span style="color:#b08d57">✦</span>Présence humaine &amp; télésurveillance 24h/24</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px;border-bottom:1px solid rgba(246,241,231,.12);padding-bottom:14px"><span style="color:#b08d57">✦</span>Entretien, linge &amp; extérieurs</div>
+        <div style="display:flex;gap:12px;align-items:baseline;font-size:15px"><span style="color:#b08d57">✦</span>Activités, animations &amp; accompagnement</div>
+        <div style="font-size:12.5px;color:#cfd6de;opacity:.72;margin-top:8px;line-height:1.6">Non inclus : dépenses personnelles, soins médicaux &amp; mutuelle (maison non médicalisée), coiffeur et prestations de confort.</div>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#b08d57;font-weight:600">Le détail, en toute transparence</div>
+        <div style="font-size:13px;color:#8a94a0;font-weight:400">Aucun frais caché — chaque euro est expliqué.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:26px 24px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#122031">Hébergement</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#b08d57">1 050 €</span></div>
+          <p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Chambre privative avec salle de bain-toilettes, accès aux espaces communs, chauffage, eau, électricité, Wi-Fi, piscine chauffée et parc.</p>
+        </div>
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:26px 24px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#122031">Services</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#b08d57">900 €</span></div>
+          <p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Présence 7j/7 de 8h à 20h30 &amp; télésurveillance 24h/24, aide au quotidien, activités, accompagnement aux rendez-vous, veille bienveillante.</p>
+        </div>
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:26px 24px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#122031">Repas</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#b08d57">600 €</span></div>
+          <p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Petit-déjeuner, déjeuner, dîner et collations, préparés maison à partir de produits locaux en circuit court.</p>
+        </div>
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:26px 24px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#122031">Entretien</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#b08d57">250 €</span></div>
+          <p style="margin:0;font-size:13px;color:#47525e;font-weight:400;line-height:1.6">Ménage des espaces communs, entretien de la chambre et du linge de maison.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTOIRE / GERANTS -->
+  <section id="histoire" style="padding:0;display:grid;grid-template-columns:1fr 1.1fr;align-items:stretch">
+    <img id="1a-gerants" src="assets/photo-gerants-web.jpg" alt="Photo des gérants" style="width:100%;height:500px;object-fit:cover;display:block;background:#dcd5c5;border-radius:4px">
+    <div style="padding:88px 96px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Vos hôtes</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.12;margin:0 0 22px">Un couple qui a choisi<br>l'accueil, toute sa vie.</h2>
+      <p style="margin:0 0 20px;font-size:16px;color:#47525e;font-weight:400;line-height:1.75">Après dix années à accueillir des familles dans notre camping du Périgord Noir, nous avons voulu donner un sens plus humain encore à notre métier : créer un lieu de vie chaleureux pour les seniors.</p>
+      <p style="margin:0;font-size:16px;color:#47525e;font-weight:400;line-height:1.75">J'ai obtenu le titre d'Assistante de Vie aux Familles pour accompagner chacun avec justesse. La Liberté, c'est notre maison — et bientôt, la vôtre.</p>
+    </div>
+  </section>
+
+  <!-- AIDES FINANCIERES -->
+  <section style="padding:90px 120px">
+    <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:70px;align-items:center">
+      <div>
+        <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Financer le séjour</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.12;margin:0 0 22px">Souvent plus accessible<br>qu'on ne le pense.</h2>
+        <p style="margin:0;font-size:16px;color:#47525e;font-weight:400;line-height:1.75">Plusieurs aides peuvent alléger le coût réel du séjour selon votre situation. Nous vous accompagnons pour monter chaque dossier, sans que vous ayez à vous en soucier.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:24px 28px"><div style="font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:6px">APA à domicile</div><p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">L'Allocation Personnalisée d'Autonomie peut participer aux frais d'accompagnement, selon le niveau d'autonomie (GIR).</p></div>
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:24px 28px"><div style="font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:6px">Crédit d'impôt 50 %</div><p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">Les services à la personne ouvrent droit à un crédit d'impôt de 50 %, y compris pour les personnes non imposables.</p></div>
+        <div style="border:1px solid rgba(18,32,49,.14);border-radius:3px;padding:24px 28px"><div style="font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:6px">Aides au logement</div><p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">Selon vos ressources, une aide au logement (APL / ALS) peut être mobilisée pour une partie de l'hébergement.</p></div>
+      </div>
+    </div>
+    <p style="margin:34px 0 0;font-size:12.5px;color:#8a94a0;font-weight:400;line-height:1.6;max-width:900px">Les aides dépendent de votre situation personnelle et sont étudiées au cas par cas. Nous faisons le point ensemble lors de votre premier échange.</p>
+  </section>
+
+  <!-- TABLEAU COMPARATIF -->
+  <section style="padding:0 56px 96px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Comparer les options</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.1;margin:0">Domicile, EHPAD, ou La Liberté ?</h2>
+    </div>
+    <div class="compare-desktop" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border:1px solid rgba(18,32,49,.14);border-radius:4px;overflow:hidden">
+      <div style="padding:20px 22px;background:#f6f1e7"></div>
+      <div style="padding:20px 22px;background:#f6f1e7;text-align:center;font-size:14px;font-weight:600;color:#47525e">Domicile seul</div>
+      <div style="padding:20px 22px;background:#122031;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#e9d9be">La Liberté</div></div>
+      <div style="padding:20px 22px;background:#f6f1e7;text-align:center;font-size:14px;font-weight:600;color:#47525e">EHPAD</div>
+
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);font-size:14px;color:#122031;font-weight:600">Présence humaine</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Ponctuelle, souvent seule</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea;text-align:center;font-size:14px;color:#122031;font-weight:600">Chaque jour, 8h–20h30</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Personnel tournant</div>
+
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);font-size:14px;color:#122031;font-weight:600">Vie sociale</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Isolement fréquent</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea;text-align:center;font-size:14px;color:#122031;font-weight:600">Repas &amp; vie partagés, 10 résidents</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Collective, grand effectif</div>
+
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);font-size:14px;color:#122031;font-weight:600">Autonomie &amp; rythme</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Préservée, mais seul(e)</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea;text-align:center;font-size:14px;color:#122031;font-weight:600">Préservée, entouré(e)</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Cadre médicalisé, horaires fixes</div>
+
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);font-size:14px;color:#122031;font-weight:600">Cadre de vie</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Son logement habituel</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea;text-align:center;font-size:14px;color:#122031;font-weight:600">Maison de caractère, parc &amp; piscine</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Établissement institutionnel</div>
+
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);font-size:14px;color:#122031;font-weight:600">Sécurité</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Aucune surveillance</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea;text-align:center;font-size:14px;color:#122031;font-weight:600">Télésurveillance 24h/24</div>
+      <div style="padding:16px 22px;border-top:1px solid rgba(18,32,49,.1);text-align:center;font-size:14px;color:#8a94a0">Encadrement médical</div>
+    </div>
+
+    <!-- version mobile : une carte par option, critères empilés -->
+    <div class="compare-mobile" style="display:none">
+      <div style="border:1px solid rgba(18,32,49,.14);border-radius:4px;overflow:hidden;margin-bottom:16px">
+        <div style="padding:16px 20px;background:#f6f1e7;text-align:center;font-size:14px;font-weight:600;color:#47525e">Domicile seul</div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Présence humaine</div><div style="font-size:14.5px;color:#122031">Ponctuelle, souvent seule</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Vie sociale</div><div style="font-size:14.5px;color:#122031">Isolement fréquent</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Autonomie &amp; rythme</div><div style="font-size:14.5px;color:#122031">Préservée, mais seul(e)</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Cadre de vie</div><div style="font-size:14.5px;color:#122031">Son logement habituel</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Sécurité</div><div style="font-size:14.5px;color:#122031">Aucune surveillance</div></div>
+      </div>
+
+      <div style="border:2px solid #b08d57;border-radius:4px;overflow:hidden;margin-bottom:16px">
+        <div style="padding:16px 20px;background:#122031;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:#e9d9be">La Liberté</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:4px">Présence humaine</div><div style="font-size:14.5px;color:#122031;font-weight:600">Chaque jour, 8h–20h30</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:4px">Vie sociale</div><div style="font-size:14.5px;color:#122031;font-weight:600">Repas &amp; vie partagés, 10 résidents</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:4px">Autonomie &amp; rythme</div><div style="font-size:14.5px;color:#122031;font-weight:600">Préservée, entouré(e)</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:4px">Cadre de vie</div><div style="font-size:14.5px;color:#122031;font-weight:600">Maison de caractère, parc &amp; piscine</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1);background:#f8f4ea"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:4px">Sécurité</div><div style="font-size:14.5px;color:#122031;font-weight:600">Télésurveillance 24h/24</div></div>
+      </div>
+
+      <div style="border:1px solid rgba(18,32,49,.14);border-radius:4px;overflow:hidden">
+        <div style="padding:16px 20px;background:#f6f1e7;text-align:center;font-size:14px;font-weight:600;color:#47525e">EHPAD</div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Présence humaine</div><div style="font-size:14.5px;color:#122031">Personnel tournant</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Vie sociale</div><div style="font-size:14.5px;color:#122031">Collective, grand effectif</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Autonomie &amp; rythme</div><div style="font-size:14.5px;color:#122031">Cadre médicalisé, horaires fixes</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Cadre de vie</div><div style="font-size:14.5px;color:#122031">Établissement institutionnel</div></div>
+        <div style="padding:14px 20px;border-top:1px solid rgba(18,32,49,.1)"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a94a0;font-weight:600;margin-bottom:4px">Sécurité</div><div style="font-size:14.5px;color:#122031">Encadrement médical</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT CA SE PASSE -->
+  <section style="padding:88px 120px;background:#efe8da">
+    <div style="text-align:center;margin-bottom:56px">
+      <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">La démarche</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.1;margin:0">Comment ça se passe ?</h2>
+    </div>
+    <div class="responsive-1col" style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:44px;color:#b08d57;margin-bottom:14px">01</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#122031">Premier contact</h3>
+        <p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">Par téléphone, formulaire ou demande de rappel. Nous prenons le temps de vous écouter.</p>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:44px;color:#b08d57;margin-bottom:14px">02</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#122031">Visite de la maison</h3>
+        <p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">Vous venez découvrir le lieu, rencontrer Régis &amp; Roselyne, sans aucun engagement.</p>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:44px;color:#b08d57;margin-bottom:14px">03</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#122031">Dossier &amp; aides</h3>
+        <p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">Nous vous accompagnons pour le contrat, la période d'essai et les démarches d'aides.</p>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:44px;color:#b08d57;margin-bottom:14px">04</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#122031">L'installation</h3>
+        <p style="margin:0;font-size:14px;color:#47525e;font-weight:400;line-height:1.65">Vous apportez meubles et souvenirs. Une nouvelle vie commence, entouré(e).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGES : MOT DU MAIRE + MOT DES HÔTES -->
+  <section style="padding:92px 90px;text-align:center">
+    <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Ils en parlent</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.1;margin:0 0 52px">Une maison déjà entourée de confiance.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px;text-align:left">
+      <div style="background:#fbf8f1;border:1px solid rgba(18,32,49,.1);border-left:3px solid #b08d57;padding:44px 46px">
+        <div style="font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:18px">Le mot du maire</div>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;line-height:1.45;color:#122031">« Voir renaître cette demeure de caractère en une maison qui prend soin de nos aînés, au cœur du village, est une vraie chance pour Nercillac. »</p>
+        <div style="font-size:13px;color:#47525e;margin-top:20px;font-weight:600">— Le Maire de Nercillac</div>
+      </div>
+      <div style="background:#fbf8f1;border:1px solid rgba(18,32,49,.1);border-left:3px solid #b08d57;padding:44px 46px">
+        <div style="font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#b08d57;font-weight:600;margin-bottom:18px">Le mot de vos hôtes</div>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;line-height:1.45;color:#122031">« Nous avons imaginé la maison que nous aimerions pour nos propres parents : chaleureuse, libre, où chacun se sent chez soi. C'est cette maison que nous vous ouvrons. »</p>
+        <div style="font-size:13px;color:#47525e;margin-top:20px;font-weight:600">— Roselyne &amp; Régis, vos hôtes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALISATION -->
+  <section style="padding:92px 120px;text-align:center;background:#efe8da">
+    <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Localisation</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;line-height:1.12;margin:0 auto 16px;max-width:760px">Au cœur de Nercillac,<br>à 10 minutes de Cognac.</h2>
+    <p style="max-width:640px;margin:0 auto 40px;font-size:16px;color:#47525e;font-weight:400;line-height:1.7">Commerces et services à deux pas — pharmacie, cabinet infirmier, médecin, boulangerie, restaurant — et toutes les infrastructures médicales de Cognac à quelques minutes.</p>
+    <div style="font-size:15px;letter-spacing:.02em;color:#122031;margin:0 auto 36px;font-weight:500">88 Rue de la Liberté, 16200 Nercillac</div>
+    <div style="display:inline-flex;gap:40px;flex-wrap:wrap;justify-content:center;font-size:14px;color:#122031">
+      <span>Pharmacie</span><span>·</span><span>Cabinet infirmier</span><span>·</span><span>Médecin</span><span>·</span><span>Boulangerie</span><span>·</span><span>Restaurant</span>
+    </div>
+    <div style="display:flex;justify-content:center;gap:56px;margin:48px 0 40px;flex-wrap:wrap">
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:#122031">10 min</div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#47525e;margin-top:8px">de Cognac</div></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:#122031">40 min</div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#47525e;margin-top:8px">d'Angoulême</div></div>
+      <div><div style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:#122031">1h15</div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#47525e;margin-top:8px">de Bordeaux</div></div>
+    </div>
+    <iframe title="Carte — Nercillac" src="https://www.google.com/maps?q=Nercillac,France&z=13&output=embed" style="width:100%;height:420px;border:0;border-radius:4px;display:block;filter:grayscale(.2)" loading="lazy"></iframe>
+  </section>
+
+  <!-- DISPONIBILITES / URGENCE -->
+  <section style="padding:94px 120px;background:#122031;color:#f6f1e7;text-align:center">
+    <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:20px">Ouverture prochaine</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:50px;line-height:1.08;margin:0 0 18px">10 places seulement.</h2>
+    <p style="max-width:640px;margin:0 auto 34px;font-size:17px;color:#cfd6de;font-weight:400;line-height:1.7">Dix personnes seulement vivront cette aventure dès la première année. En être, c'est inaugurer un lieu de vie exceptionnel et écrire les premières pages de son histoire.</p>
+    <div style="display:flex;gap:14px;justify-content:center;margin:0 auto 20px;flex-wrap:wrap;max-width:420px">
+      <span style="width:18px;height:18px;border-radius:50%;background:#b08d57;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;background:#b08d57;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #b08d57"></span>
+    </div>
+    <div style="display:flex;justify-content:center;gap:26px;margin:0 auto 36px;font-size:12.5px;letter-spacing:.06em;color:#cfd6de;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:12px;height:12px;border-radius:50%;background:#b08d57"></span>2 places déjà réservées</span>
+      <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:12px;height:12px;border-radius:50%;border:1.5px solid #b08d57"></span>8 encore disponibles</span>
+    </div>
+    <a href="#contact" style="text-decoration:none;background:#b08d57;color:#122031;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:17px 38px;border-radius:2px;display:inline-block">Réserver ma place</a>
+    <div style="margin-top:18px;font-size:12.5px;letter-spacing:.06em;color:#cfd6de;opacity:.85">Sans engagement · Contrat avec période d'essai</div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding:92px 120px">
+    <div style="text-align:center;margin-bottom:52px">
+      <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#b08d57;margin-bottom:20px">Questions fréquentes</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.1;margin:0">Vous vous posez sûrement ces questions.</h2>
+    </div>
+    <div style="max-width:900px;margin:0 auto;border-top:1px solid rgba(18,32,49,.14)">
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Faut-il être autonome pour être accueilli ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Oui. La Liberté accueille des seniors autonomes. La maison n'est pas médicalisée : elle offre une présence humaine, de la sécurité et de l'accompagnement au quotidien, en préservant l'indépendance de chacun.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Que se passe-t-il si l'état de santé évolue ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Une présence est assurée chaque jour de 8h à 20h30 et une télésurveillance veille 24h/24. Les professionnels de santé et les infrastructures médicales de Cognac sont à quelques minutes. Nous anticipons toujours les besoins avec la famille.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Peut-on faire un essai avant de s'engager ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Oui. Nous proposons un contrat avec période d'essai, pour que le résident et sa famille soient certains que ce mode de vie leur convient.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Les familles peuvent-elles rendre visite librement ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Bien sûr. Une chambre est réservée aux familles, en demi-pension ou pension complète, pour qu'elles puissent rester quelques jours à vos côtés.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Peut-on garder son médecin et ses habitudes ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Oui, entièrement. Chacun garde son médecin, ses intervenants et son rythme de vie. C'est tout l'esprit de La Liberté.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Que comprend exactement le tarif de 2 800 € ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Tout : hébergement en chambre individuelle, pension complète préparée tous les jours, présence humaine et télésurveillance, entretien du linge et des espaces, activités et accompagnement. Sans frais cachés. Nous vous aidons aussi à mobiliser les aides possibles.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Peut-on venir avec son animal de compagnie ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">C'est à étudier ensemble selon l'animal et la vie collective de la maison. Parlons-en lors de votre visite : nous savons combien un compagnon peut compter.</p></details>
+      <details><summary style="padding:24px 40px 24px 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#122031">Peut-on s'installer en couple ?</summary><p style="margin:0 0 24px;font-size:15.5px;color:#47525e;font-weight:400;line-height:1.75;max-width:760px">Oui, c'est possible et nous en discutons ensemble selon les chambres disponibles, pour que chacun conserve son intimité et son confort.</p></details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding:96px 120px;background:#122031;color:#f6f1e7">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start">
+      <div>
+        <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:20px">Prendre contact</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:46px;line-height:1.1;margin:0 0 24px">Venez visiter<br>la maison.</h2>
+        <p style="margin:0 0 40px;font-size:16px;color:#cfd6de;font-weight:400;line-height:1.75">Le meilleur moyen de sentir l'esprit du lieu, c'est de pousser la porte. Écrivez-nous ou appelez — nous vous recevrons avec plaisir.</p>
+        <div style="background:rgba(176,141,87,.12);border:1px solid rgba(176,141,87,.5);border-radius:4px;padding:26px 28px;margin-bottom:34px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#f6f1e7;margin-bottom:6px">Pas le temps d'écrire ? On vous rappelle.</div>
+          <p style="margin:0 0 18px;font-size:14.5px;color:#cfd6de;font-weight:400;line-height:1.6">Laissez votre prénom et votre numéro : Roselyne vous rappelle sous 24h, sans engagement.</p>
+          <form action="mailto:roselyne@maisonlaliberte.fr?subject=Demande%20de%20rappel" method="post" enctype="text/plain" style="display:flex;gap:12px;flex-wrap:wrap">
+            <input name="prenom" type="text" placeholder="Prénom" style="flex:1;min-width:120px;background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:16px;font-family:inherit;outline:none">
+            <input name="telephone" type="tel" placeholder="Téléphone" style="flex:1;min-width:120px;background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:16px;font-family:inherit;outline:none">
+            <button type="submit" style="background:#b08d57;color:#122031;border:none;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:13px 22px;border-radius:2px;cursor:pointer;font-family:inherit;white-space:nowrap">Être rappelé</button>
+          </form>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <a href="tel:+33788291723" style="text-decoration:none;color:#f6f1e7;display:flex;align-items:center;gap:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#b08d57;letter-spacing:.2em">TÉL</span><span style="font-size:22px;font-weight:600">07 88 29 17 23</span></a>
+          <a href="mailto:roselyne@maisonlaliberte.fr" style="text-decoration:none;color:#f6f1e7;display:flex;align-items:center;gap:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#b08d57;letter-spacing:.2em">MAIL</span><span style="font-size:18px">roselyne@maisonlaliberte.fr</span></a>
+          <div style="display:flex;align-items:center;gap:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#b08d57;letter-spacing:.2em">LIEU</span><span style="font-size:18px">88 Rue de la Liberté, 16200 Nercillac</span></div>
+        </div>
+      </div>
+      <form action="mailto:roselyne@maisonlaliberte.fr" method="post" enctype="text/plain" style="background:rgba(246,241,231,.05);border:1px solid rgba(246,241,231,.14);border-radius:4px;padding:44px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfd6de">Votre nom<input name="nom" type="text" style="background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:15px;font-family:inherit;outline:none"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfd6de">Téléphone<input name="tel" type="tel" style="background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:15px;font-family:inherit;outline:none"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfd6de">E-mail<input name="email" type="email" style="background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:15px;font-family:inherit;outline:none"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfd6de">La demande concerne<select name="pour_qui" style="background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:15px;font-family:inherit;outline:none"><option style="color:#122031">Un parent / un proche</option><option style="color:#122031">Moi-même</option><option style="color:#122031">Un professionnel de santé</option></select></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfd6de">Votre message<textarea name="message" rows="3" style="background:transparent;border:none;border-bottom:1px solid rgba(246,241,231,.35);padding:10px 0;color:#f6f1e7;font-size:15px;font-family:inherit;outline:none;resize:none"></textarea></label>
+        <button type="submit" style="margin-top:12px;background:#b08d57;color:#122031;border:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:16px;border-radius:2px;cursor:pointer;font-family:inherit">Réserver une visite</button>
+        <div style="font-size:12px;color:#cfd6de;opacity:.7;line-height:1.6;text-align:center">Réponse sous 24h · Vos données servent uniquement à vous recontacter et ne sont jamais transmises à des tiers.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0d1826;color:#cfd6de;padding:48px 120px;display:flex;align-items:center;justify-content:space-between;gap:30px">
+    <div style="line-height:1">
+      <div style="font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-weight:600;color:#e9d9be;margin-bottom:9px">Maison</div>
+      <div style="font-family:'Playfair Display',serif;font-size:30px;letter-spacing:.05em;font-weight:500;color:#f6f1e7">LA LIBERTÉ</div>
+    </div>
+    <div style="font-size:13px;line-height:1.7;text-align:right">
+      <div>Maison La Liberté — 88 Rue de la Liberté, 16200 Nercillac</div>
+      <div>07 88 29 17 23 · roselyne@maisonlaliberte.fr</div>
+      <div style="opacity:.5;margin-top:6px;font-size:11.5px">Maison partagée pour seniors autonomes · Non médicalisée</div>
+      <div style="opacity:.5;margin-top:4px;font-size:11.5px"><a href="#" style="text-decoration:none;color:inherit">Mentions légales</a> · <a href="#" style="text-decoration:none;color:inherit">Politique de confidentialité</a></div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
